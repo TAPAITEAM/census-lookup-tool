@@ -1,23 +1,26 @@
 import streamlit as st
 from census_demographics_lookup import CensusDemographicsLookup
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 import os
 import json
 
 # Helper function to get Google credentials
 def get_google_credentials():
     """Get Google service account credentials from file or Streamlit secrets"""
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    scopes = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+    ]
     
     # Try Streamlit secrets first (for cloud deployment)
     if "service_account" in st.secrets:
         credentials_dict = dict(st.secrets["service_account"])
-        return ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
+        return Credentials.from_service_account_info(credentials_dict, scopes=scopes)
     
     # Fall back to local file (for local development)
     elif os.path.exists("service_account.json"):
-        return ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
+        return Credentials.from_service_account_file("service_account.json", scopes=scopes)
     
     else:
         raise FileNotFoundError("No service account credentials found. Add service_account.json or configure Streamlit secrets.")
