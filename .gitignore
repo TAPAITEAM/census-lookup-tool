@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Sensitive files - DO NOT COMMIT
+service_account.json
+service_account*.json
+credentials.json
+*.key
+*.pem
+.streamlit/secrets.toml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+uploaded_file.csv
+*.log
+
+# Data files (optional - uncomment if data files are large)
+# data/*.xlsx
+# data/*.csv
