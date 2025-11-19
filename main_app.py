@@ -60,7 +60,11 @@ with st.expander("ℹ️ How to Use This Tool", expanded=False):
     """)
 
 # Check if credentials are available
-credentials_available = "service_account" in st.secrets or os.path.exists("service_account.json")
+try:
+    credentials_available = "service_account" in st.secrets or os.path.exists("service_account.json")
+except FileNotFoundError:
+    credentials_available = os.path.exists("service_account.json")
+
 if not credentials_available:
     st.warning("⚠️ Google Sheets credentials not configured. Single address lookup will work, but batch processing is disabled.")
 

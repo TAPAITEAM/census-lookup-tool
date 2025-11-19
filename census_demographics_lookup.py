@@ -14,10 +14,9 @@ from datetime import datetime
 from typing import Dict, Optional, Tuple, List
 import argparse
 import sys
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import google.auth
-from googleapiclient.discovery import build
+
+# Note: gspread and oauth2client are used in deprecated functions
+# but kept for backward compatibility with old code
 
 class CensusDemographicsLookup:
     def __init__(self, google_maps_api_key: str = None):
