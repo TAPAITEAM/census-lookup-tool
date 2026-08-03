@@ -424,7 +424,7 @@ class CensusDemographicsLookup:
         
         try:
             print(f"📊 Fetching Census data for tract {tract_fips}")
-            response = requests.get(self.acs_url, params=params, timeout=10)
+            response = requests.get(url, timeout=10)
             response.raise_for_status()
             
             data = response.json()
