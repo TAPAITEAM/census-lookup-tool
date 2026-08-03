@@ -19,7 +19,7 @@ import sys
 # but kept for backward compatibility with old code
 
 class CensusDemographicsLookup:
-    def __init__(self, google_maps_api_key: str = None):
+    def __init__(self, google_maps_api_key: str = None, census_api_key: str = None):
         self.geocoding_url = "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress"
         self.acs_url = "https://api.census.gov/data/2022/acs/acs5"
         self.google_maps_url = "https://maps.googleapis.com/maps/api/geocode/json"
@@ -29,7 +29,7 @@ class CensusDemographicsLookup:
         self.ffiec_tract_lookup = None
         self.ffiec_tract_source = None
         self.census_api_key = census_api_key or os.environ.get("CENSUS_API_KEY", "")
-        
+
         # Common address abbreviations for fuzzy matching
         self.address_abbreviations = {
             'street': ['st', 'str', 'st.', 'str.'],
