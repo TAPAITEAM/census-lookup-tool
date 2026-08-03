@@ -28,6 +28,7 @@ class CensusDemographicsLookup:
         self.cache = {}  # Simple in-memory cache
         self.ffiec_tract_lookup = None
         self.ffiec_tract_source = None
+        self.census_api_key = census_api_key or os.environ.get("CENSUS_API_KEY", "")
         
         # Common address abbreviations for fuzzy matching
         self.address_abbreviations = {
@@ -419,7 +420,9 @@ class CensusDemographicsLookup:
             f"&for=tract:{tract_fips}"
             f"&in=state:{state_fips}"
             f"&in=county:{county_fips}"
+            f"&key={self.census_api_key}"
         )
+        
         response = requests.get(url, timeout=10)
         
         try:
