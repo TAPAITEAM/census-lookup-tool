@@ -26,7 +26,8 @@ def get_google_credentials():
         raise FileNotFoundError("No service account credentials found. Add service_account.json or configure Streamlit secrets.")
 
 # Initialize the CensusDemographicsLookup class
-lookup = CensusDemographicsLookup()
+census_api_key = st.secrets.get("census", {}).get("api_key", "")
+lookup = CensusDemographicsLookup(census_api_key=census_api_key)
 
 # Page configuration
 st.set_page_config(
