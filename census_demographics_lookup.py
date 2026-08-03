@@ -259,8 +259,8 @@ class CensusDemographicsLookup:
         for i, full_address in enumerate(address_variations):
             params = {
                 'address': full_address,
-                'benchmark': '2020',
-                'vintage': '2020',
+                'benchmark': 'Public_AR_Current',
+                'vintage': 'Current_Current',
                 'format': 'json'
             }
             
@@ -334,9 +334,9 @@ class CensusDemographicsLookup:
                 
                 # Try Census API with the standardized address
                 params = {
-                    'address': standardized_address,
-                    'benchmark': '2020',
-                    'vintage': '2020',
+                    'address': full_address,
+                    'benchmark': 'Public_AR_Current',
+                    'vintage': 'Current_Current',
                     'format': 'json'
                 }
                 
