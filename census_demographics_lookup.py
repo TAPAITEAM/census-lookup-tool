@@ -24,7 +24,8 @@ class CensusDemographicsLookup:
         self.acs_url = "https://api.census.gov/data/2022/acs/acs5"
         self.google_maps_url = "https://maps.googleapis.com/maps/api/geocode/json"
         # Default Google Maps API key (can be overridden)
-        self.google_maps_api_key = google_maps_api_key or "AIzaSyDZ0jEaRgDW8LAe3-BbceIe84WeG2qyXxw"
+        #self.google_maps_api_key = google_maps_api_key or "AIzaSyDZ0jEaRgDW8LAe3-BbceIe84WeG2qyXxw"
+        self.google_maps_api_key = google_maps_api_key or None
         self.cache = {}  # Simple in-memory cache
         self.ffiec_tract_lookup = None
         self.ffiec_tract_source = None
