@@ -413,11 +413,14 @@ class CensusDemographicsLookup:
             'B08301_010E'   # Public transportation commuters
         ]
         
-        params = {
-            'get': ','.join(variables),
-            'for': f'tract:{tract_fips}',
-            'in': [f'state:{state_fips}', f'county:{county_fips}']
-        }
+        url = (
+            f"{self.acs_url}"
+            f"?get={','.join(variables)}"
+            f"&for=tract:{tract_fips}"
+            f"&in=state:{state_fips}"
+            f"&in=county:{county_fips}"
+        )
+        response = requests.get(url, timeout=10)
         
         try:
             print(f"📊 Fetching Census data for tract {tract_fips}")
