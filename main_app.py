@@ -126,7 +126,7 @@ def process_google_sheet(sheet_url):
     sheet = client.open_by_url(sheet_url).worksheet('BulkInputSubset')
 
     # Fetch all data from the sheet
-    data = sheet.get_all_records()
+    data = sheet.get_all_records(expected_headers=[])
     return data
 
 def process_and_update_google_sheet(sheet_url, dry_run: bool = False):
