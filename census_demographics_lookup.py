@@ -443,10 +443,10 @@ class CensusDemographicsLookup:
                 headers = data[0]
                 values = data[1]
             except (IndexError, TypeError):
-            return {
+                return {
                 'error': 'No Census data available',
                 'message': f'Unexpected response for tract {tract_fips}'
-            }
+                }
             
             # Create dictionary mapping
             census_data = dict(zip(headers, values))
