@@ -148,6 +148,7 @@ def process_and_update_google_sheet(sheet_url, dry_run: bool = False):
     results = []
     successes = 0
     failures = 0
+    
     for i, row in enumerate(data, start=2):  # start=2 for row numbers (skip header)
         # Try several possible address header names; some sheets use 'AccountAddress' or other variants
         full_address = (
