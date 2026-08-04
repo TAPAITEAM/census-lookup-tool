@@ -419,8 +419,7 @@ class CensusDemographicsLookup:
             f"{self.acs_url}"
             f"?get={','.join(variables)}"
             f"&for=tract:{tract_fips}"
-            f"&in=state:{state_fips}"
-            f"&in=county:{county_fips}"
+            f"&in=state:{state_fips}%20county:{county_fips}"
             f"&key={self.census_api_key}"
         )
         
