@@ -29,6 +29,7 @@ def get_google_credentials():
 census_api_key = st.secrets.get("census", {}).get("api_key", "")
 lookup = CensusDemographicsLookup(census_api_key=census_api_key)
 
+
 # Page configuration
 st.set_page_config(
     page_title="Census Demographics Lookup",
@@ -140,7 +141,10 @@ def process_and_update_google_sheet(sheet_url, dry_run: bool = False):
     data = sheet.get_all_records(expected_headers=[])
 
     # Initialize the lookup class
-    lookup = CensusDemographicsLookup()
+    
+    #census_api_key = st.secrets.get("census", {}).get("api_key", "")
+    lookup = CensusDemographicsLookup(census_api_key=st.secrets.get("census", {}).get("api_key", ""))
+    #lookup = CensusDemographicsLookup(census_api_key=census_api_key)
     results = []
     successes = 0
     failures = 0
